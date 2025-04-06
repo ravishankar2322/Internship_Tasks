@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webpage</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+
+        /* Main content styling */
+        main {
+            padding: 20px;
+        }
+
+        img {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Task 1 Webpage</h1>
+    </header>
+
+    <main>
+        <section>
+            <p>This is a simple webpage created to demonstrate basic HTML elements.</p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI9RCaHmaI4zOvGBZiwy-K8lIUwIfFJ-_9Hg&s" alt="Placeholder Image">
+            <p>Visit <a href="https://www.example.com" target="_blank">Example.com</a> for more information.</p>
+            <button id="alertButton">Click Me!</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Task1 Webpage</p>
+    </footer>
+
+    <script>
+        // JavaScript to handle button click
+        document.getElementById('alertButton').addEventListener('click', function() {
+            alert('Hello! You clicked the button.');
+        });
+    </script>
+</body>
+</html>
