@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Cricket Match Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #ff9800;
+        }
+        #match-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        select {
+            background-color: #4caf50;
+            color: white;
+        }
+        button {
+            background-color: #2196f3;
+            color: white;
+        }
+        button:hover {
+            background-color: #1976d2;
+        }
+        #data-display {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .match-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.2s;
+        }
+        .match-card:hover {
+            transform: scale(1.05);
+        }
+        .match-title {
+            color: #ff5722;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .match-detail {
+            color: #555;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>IPL Cricket Match Data</h1>
+    <div id="match-container">
+        <label for="match-select">Select a Match:</label>
+        <select id="match-select">
+            <option value="1">Match 1: CSK vs MI</option>
+            <option value="2">Match 2: RCB vs KKR</option>
+            <option value="3">Match 3: SRH vs DC</option>
+            <option value="4">Match 4: RR vs PBKS</option>
+            <option value="5">Match 5: GT vs CSK</option>
+        </select>
+        <button id="fetch-button">Fetch Match Details</button>
+    </div>
+
+    <div id="data-display">Select a match and click "Fetch Match Details" to load data.</div>
+
+    <script>
+        // Hardcoded match data
+        const matchData = {
+            1: {
+                title: "CSK vs MI",
+                venue: "Wankhede Stadium, Mumbai",
+                date: "2023-04-01",
+                team1: "Chennai Super Kings",
+                team2: "Mumbai Indians",
+                score: "CSK: 180/5, MI: 175/8"
+            },
+            2: {
+                title: "RCB vs KKR",
+                venue: "M. Chinnaswamy Stadium, Bangalore",
+                date: "2023-04-02",
+                team1: "Royal Challengers Bangalore",
+                team2: "Kolkata Knight Riders",
+                score: "RCB: 200/4, KKR: 190/6"
+            },
+            3: {
+                title: "SRH vs DC",
+                venue: "Rajiv Gandhi International Cricket Stadium, Hyderabad",
+                date: "2023-04-03",
+                team1: "Sunrisers Hyderabad",
+                team2: "Delhi Capitals",
+                score: "SRH: 150/8, DC: 155/4"
+            },
+            4: {
+                title: "RR vs PBKS",
+                venue: "Sawai Mansingh Stadium, Jaipur",
+                date: "2023-04-04",
+                team1: "Rajasthan Royals",
+                team2: "Punjab Kings",
+                score: "RR: 170/6, PBKS: 160/7"
+            },
+            5: {
+                title: "GT vs CSK",
+                venue: "Narendra Modi Stadium, Ahmedabad",
+                date: "2023-04-05",
+                team1: "Gujarat Titans",
+                team2: "Chennai Super Kings",
+                score: "GT: 190/3, CSK: 180/5"
+            }
+        };
+
+        document.getElementById('fetch-button').addEventListener('click', function() {
+            const matchId = document.getElementById('match-select').value;
+            const match = matchData[matchId]; // Get the match data based on selected ID
+
+            const displayDiv = document.getElementById('data-display');
+            displayDiv.innerHTML = ''; // Clear previous data
+
+            // Create HTML elements to display the fetched match details
+            if (match) {
+                const matchCard = document.createElement('div');
+                matchCard.className = 'match-card';
+                matchCard.innerHTML = `
+                    <div class="match-title">${match.title}</div>
+                    <div class="match-detail"><strong>Venue:</strong> ${match.venue}</div>
+                    <div class="match-detail"><strong>Date:</strong> ${match.date}</div>
+                    <div class="match-detail"><strong>Teams:</strong> ${match.team1} vs ${match.team2}</div>
+                    <div class="match-detail"><strong>Score:</strong> ${match.score}</div>
+                `;
+                displayDiv.appendChild(matchCard);
+            } else {
+                displayDiv.innerHTML = 'No match data available.';
+            }
+        });
+    </script>
+</body>
+</html>
